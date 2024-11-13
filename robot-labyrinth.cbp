@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="robot-labyrinth" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/robot-labyrinth" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/robot-labyrinth" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/AlgorithmeDeSortie.h" />
+		<Unit filename="include/MainDroite.h" />
+		<Unit filename="include/MenuDuJeu.h" />
+		<Unit filename="include/Observateur.h" />
+		<Unit filename="include/Pledge.h" />
+		<Unit filename="include/Robot.h" />
+		<Unit filename="include/Terrain.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/AlgorithmeDeSortie.cpp" />
+		<Unit filename="src/MainDroite.cpp" />
+		<Unit filename="src/MenuDuJeu.cpp" />
+		<Unit filename="src/Observateur.cpp" />
+		<Unit filename="src/Pledge.cpp" />
+		<Unit filename="src/Robot.cpp" />
+		<Unit filename="src/Terrain.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
