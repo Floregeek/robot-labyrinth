@@ -1,0 +1,41 @@
+#ifndef POSITION_H
+#define POSITION_H
+
+#include <iostream>
+#include <cmath>
+
+class Position {
+private:
+    int d_x; // Coordonnée x
+    int d_y; // Coordonnée y
+
+public:
+    // Constructeurs
+    Position(int px = 0, int py = 0);
+
+    // Accesseurs
+    int getX() const;
+    int getY() const;
+
+    // Modificateurs
+    void setX(int px);
+    void setY(int py);
+
+    // Méthode pour déplacer la position
+    void move(int dx, int dy);
+
+    // Calculer la distance entre deux positions
+    double distance(const Position& other) const;
+
+    // Opérateurs
+    bool operator==(const Position& other) const;
+    bool operator!=(const Position& other) const;
+
+    // Méthode d'affichage
+    void print(std::ostream& os) const;
+};
+
+// Surcharge des opérateurs d'entrée/sortie
+std::ostream& operator<<(std::ostream& os, const Position& p);
+
+#endif // POSITION_H
