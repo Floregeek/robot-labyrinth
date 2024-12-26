@@ -20,8 +20,8 @@ class Robot
         void tournerGauche();
         void tournerDroite();
         bool detecterObstacleEnFace(const Terrain& terrain) const;
-        bool detecterObstacleAGauche() const;
-        bool detecterObstacleADroite() const;
+        bool detecterObstacleAGauche(const Terrain& terrain) const;
+        bool detecterObstacleADroite(const Terrain& terrain) const;
 
 
         void notifierObservateurs();

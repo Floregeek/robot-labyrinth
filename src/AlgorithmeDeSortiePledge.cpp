@@ -1,30 +1,40 @@
 #include "AlgorithmeDeSortiePledge.h"
 
 void AlgorithmeDeSortiePledge::executer(Robot &robot, const Terrain &terrain) {
-    int compteur = 0;
-    bool sortieAtteinte = false;
     Position sortie = terrain.getPositionArrivee();
-    while (!sortieAtteinte) {
+    int compteurAngulaire = 0;
+
+    while (robot.getPosition() != sortie) {
+        while (compteurAngulaire != 0 || robot.detecterObstacleEnFace(terrain)) {
+            if (robot.detecterObstacleEnFace(terrain)) {
+                if (!robot.detecterObstacleAGauche(terrain)) {
+                    robot.tournerGauche();
+                    compteurAngulaire++;
+                }
+                else {
+                    robot.tournerDroite();
+                    compteurAngulaire--;
+                }
+            }
+            else {
+                robot.avancer(terrain);
+
+                if (compteurAngulaire == 0) {
+                    break;
+                }
+            }
+
+            if (robot.getPosition() == sortie) {
+                return;
+            }
+        }
 
         while (!robot.detecterObstacleEnFace(terrain)) {
             robot.avancer(terrain);
-        }
 
-
-        do {
-            if (!robot.detecterObstacleADroite()) {
-                robot.tournerDroite();
-                compteur--;
-            } else if (!robot.detecterObstacleEnFace(terrain)) {
-                robot.avancer(terrain);
-            } else {
-                robot.tournerGauche();
-                compteur++;
-            }
             if (robot.getPosition() == sortie) {
-                sortieAtteinte = true;
-                break;
+                return;
             }
-        } while (compteur != 0);
+        }
     }
 }

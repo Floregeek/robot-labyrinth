@@ -64,8 +64,7 @@ bool Robot::detecterObstacleEnFace(const Terrain& terrain) const {
 }
 
 
-bool Robot::detecterObstacleAGauche() const {
-
+bool Robot::detecterObstacleAGauche(const Terrain& terrain) const {
     Position positionAGauche = d_position;
 
     switch (d_direction) {
@@ -83,8 +82,11 @@ bool Robot::detecterObstacleAGauche() const {
             break;
     }
 
+    if (terrain.estMur(positionAGauche)) {
+        return true;
+    }
 
-    for (const Position& obstacle : obstacles) {
+    for (const Position& obstacle : terrain.obtenirObstacles()) {
         if (obstacle == positionAGauche) {
             return true;
         }
@@ -94,8 +96,8 @@ bool Robot::detecterObstacleAGauche() const {
 }
 
 
-bool Robot::detecterObstacleADroite() const {
 
+bool Robot::detecterObstacleADroite(const Terrain& terrain) const {
     Position positionADroite = d_position;
 
     switch (d_direction) {
@@ -113,8 +115,11 @@ bool Robot::detecterObstacleADroite() const {
             break;
     }
 
+    if (terrain.estMur(positionADroite)) {
+        return true;
+    }
 
-    for (const Position& obstacle : obstacles) {
+    for (const Position& obstacle : terrain.obtenirObstacles()) {
         if (obstacle == positionADroite) {
             return true;
         }
@@ -122,7 +127,6 @@ bool Robot::detecterObstacleADroite() const {
 
     return false;
 }
-
 
 
 void Robot::notifierObservateurs(){

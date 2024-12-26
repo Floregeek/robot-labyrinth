@@ -3,7 +3,7 @@
 void AlgorithmeDeSortieMainDroite::executer(Robot& robot, const Terrain& terrain)
 {
     while (robot.getPosition()!= terrain.getPositionArrivee()) {
-        if (!robot.detecterObstacleADroite()) {
+        if (!robot.detecterObstacleADroite(terrain)) {
             robot.tournerDroite();
             robot.avancer(terrain);
         } else if (!robot.detecterObstacleEnFace(terrain)) {

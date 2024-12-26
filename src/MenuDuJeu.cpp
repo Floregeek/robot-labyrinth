@@ -40,10 +40,10 @@ void MenuDuJeu::afficherMenuPrincipal() {
                         Position depart = terrain.getPositionDepart();
                         robot = new Robot(depart, Direction::NORD);
                         observateurAffichage = std::make_unique<ObservateurAffichage>();
-                       observateurStatistique = std::make_unique<ObservateurStatistique>();
+                        observateurStatistique = std::make_unique<ObservateurStatistique>();
 
 
-                           robot->enregistrerObservateur(move(observateurAffichage));
+                          robot->enregistrerObservateur(move(observateurAffichage));
                           robot->enregistrerObservateur(move(observateurStatistique));
 
                         std::cout << "Terrain initial avec le robot :\n";
@@ -179,6 +179,8 @@ void MenuDuJeu::executerAlgorithme(AlgorithmeDeSortie& algorithme) {
 
 
     algorithme.executer(*robot, terrain);
+    terrain.afficherTerrain(modeTexte, *robot);
+
 }
 
 

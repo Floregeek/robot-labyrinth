@@ -241,3 +241,103 @@
 	"Terrain.h"
 	<vector>
 
+1735221220 source:c:\users\elève\documents\robot-labyrinth\main.cpp
+	<iostream>
+	<fstream>
+	"Terrain.h"
+	"Robot.h"
+	"MenuDuJeu.h"
+	<locale>
+	<conio.h>
+	"ObservateurAffichage.h"
+	"ObservateurStatistique.h"
+	"Position.h"
+	<memory>
+
+1735221220 c:\users\elève\documents\robot-labyrinth\include\terrain.h
+	<vector>
+	<string>
+	"Position.h"
+	"Robot.h"
+
+1735221220 c:\users\elève\documents\robot-labyrinth\include\position.h
+	<iostream>
+	<cmath>
+
+1735221430 c:\users\elève\documents\robot-labyrinth\include\robot.h
+	<vector>
+	"Position.h"
+	"Observateur.h"
+	"Terrain.h"
+	<memory>
+
+1735221220 c:\users\elève\documents\robot-labyrinth\include\observateur.h
+	"Position.h"
+	"Robot.h"
+
+1735221220 c:\users\elève\documents\robot-labyrinth\include\menudujeu.h
+	"Terrain.h"
+	"Robot.h"
+	"AlgorithmeDeSortieMainDroite.h"
+	"AlgorithmeDeSortiePledge.h"
+	"ObservateurAffichage.h"
+	"ObservateurStatistique.h"
+	<conio.h>
+	<fstream>
+
+1735221220 c:\users\elève\documents\robot-labyrinth\include\algorithmedesortiemaindroite.h
+	<iostream>
+	"Robot.h"
+	"Terrain.h"
+	"AlgorithmeDeSortie.h"
+
+1735221220 c:\users\elève\documents\robot-labyrinth\include\algorithmedesortie.h
+	"Robot.h"
+	"Terrain.h"
+
+1735221220 c:\users\elève\documents\robot-labyrinth\include\algorithmedesortiepledge.h
+	"Robot.h"
+	"Terrain.h"
+	"AlgorithmeDeSortie.h"
+
+1735221220 c:\users\elève\documents\robot-labyrinth\include\observateuraffichage.h
+	"Robot.h"
+	"Observateur.h"
+
+1735221220 c:\users\elève\documents\robot-labyrinth\include\observateurstatistique.h
+	"Observateur.h"
+	"Robot.h"
+
+1735221220 source:c:\users\elève\documents\robot-labyrinth\src\algorithmedesortiemaindroite.cpp
+	"AlgorithmeDeSortieMainDroite.h"
+
+1735221220 source:c:\users\elève\documents\robot-labyrinth\src\observateur.cpp
+	"Observateur.h"
+
+1735221220 source:c:\users\elève\documents\robot-labyrinth\src\observateuraffichage.cpp
+	"ObservateurAffichage.h"
+
+1735221220 source:c:\users\elève\documents\robot-labyrinth\src\observateurstatistique.cpp
+	"ObservateurStatistique.h"
+	<fstream>
+	<iostream>
+	<sstream>
+
+1735221220 source:c:\users\elève\documents\robot-labyrinth\src\position.cpp
+	"position.h"
+
+1735221220 source:c:\users\elève\documents\robot-labyrinth\src\terrain.cpp
+	"Terrain.h"
+	<fstream>
+	<iostream>
+	<sstream>
+
+1735221358 source:c:\users\elève\documents\robot-labyrinth\src\menudujeu.cpp
+	"MenuDuJeu.h"
+	<iostream>
+	<fstream>
+	<sstream>
+
+1735221386 source:c:\users\elève\documents\robot-labyrinth\src\algorithmedesortiepledge.cpp
+	"AlgorithmeDeSortiePledge.h"
+
