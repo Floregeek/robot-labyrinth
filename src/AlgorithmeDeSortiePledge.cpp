@@ -10,14 +10,15 @@ void AlgorithmeDeSortiePledge::executer(Robot &robot, const Terrain &terrain) {
                 if (!robot.detecterObstacleAGauche(terrain)) {
                     robot.tournerGauche();
                     compteurAngulaire++;
-                }
-                else {
+                    terrain.afficherTerrain(modetext, robot);
+                } else {
                     robot.tournerDroite();
                     compteurAngulaire--;
+                    terrain.afficherTerrain(modetext, robot);
                 }
-            }
-            else {
+            } else {
                 robot.avancer(terrain);
+                terrain.afficherTerrain(modetext, robot);
 
                 if (compteurAngulaire == 0) {
                     break;
@@ -25,13 +26,14 @@ void AlgorithmeDeSortiePledge::executer(Robot &robot, const Terrain &terrain) {
             }
 
             if (robot.getPosition() == sortie) {
+                std ::cout<<"vous avez ganger \n";
                 return;
             }
         }
 
         while (!robot.detecterObstacleEnFace(terrain)) {
             robot.avancer(terrain);
-
+            terrain.afficherTerrain(modetext, robot);
             if (robot.getPosition() == sortie) {
                 return;
             }

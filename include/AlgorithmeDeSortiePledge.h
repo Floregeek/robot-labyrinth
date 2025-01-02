@@ -7,8 +7,10 @@
 
 class AlgorithmeDeSortiePledge: public AlgorithmeDeSortie
 {
+private :
+    int modetext=0;
    public:
    void executer(Robot& robot, const Terrain& terrain)override;
 };
 
-#endif // ALGORITHMEDESORTIEPLEDGE_H
+#endif

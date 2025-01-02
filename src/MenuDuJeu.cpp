@@ -179,7 +179,6 @@ void MenuDuJeu::executerAlgorithme(AlgorithmeDeSortie& algorithme) {
 
 
     algorithme.executer(*robot, terrain);
-    terrain.afficherTerrain(modeTexte, *robot);
 
 }
 
