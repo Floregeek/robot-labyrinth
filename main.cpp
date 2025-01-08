@@ -8,12 +8,16 @@
 #include "ObservateurAffichage.h"
 #include "ObservateurStatistique.h"
 #include "Position.h"
+#include <io.h>
+#include <fcntl.h>
+#include <windows.h>
 
 #include <memory>
 using namespace std;
 
 int main() {
-    setlocale(LC_ALL, "");
+    //setlocale(LC_ALL, "");
+    SetConsoleOutputCP(65001);
  try {
         std::cout << "Bienvenue dans le jeu du robot labyrinthe !\n";
         MenuDuJeu menu;

@@ -26,7 +26,7 @@ void AlgorithmeDeSortiePledge::executer(Robot &robot, const Terrain &terrain) {
             }
 
             if (robot.getPosition() == sortie) {
-                std ::cout<<"vous avez ganger \n";
+                std ::cout<<"vous avez gagner \n";
                 return;
             }
         }

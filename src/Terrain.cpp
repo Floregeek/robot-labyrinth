@@ -2,6 +2,8 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <io.h>
+#include <fcntl.h>
 
 
 Terrain::Terrain(const std::string& fichierTerrain) {
@@ -133,7 +135,7 @@ void Terrain::afficherTerrain(int mode, Robot& robot) const {
         } else {
             std::cout << '-';
         }
-    } else if (i == grille.size() - 1) {
+     else if (i == grille.size() - 1) {
         if (j == 0 || j == grille[i].size() - 1) {
             std::cout << '+';
         } else {
@@ -171,24 +173,72 @@ void Terrain::afficherTerrain(int mode, Robot& robot) const {
                 break;
          }
           case 2: { // Mode Unicode avancé
-                    if (c == 'X') {
-                        std::cout << "╬";
-                    }
+                            std::vector<std::string> terrainAmeliore;
 
-                    else if (c == '.') {
-                        std::cout << '.';
-                    }
+                            // Construire les bordures du haut
+                            std::string bordureHaut = "┏";
+                            for (size_t i = 0; i < grille[0].size(); ++i) {
+                                bordureHaut += "━━";
+                            }
+                            bordureHaut += "┓";
 
-                    else if (c == 'D') {
-                        std::cout << "★";
-                    } else if (c == 'A') {
-                        std::cout << "☆";
-                    }
+                            // Construire les bordures du bas
+                            std::string bordureBas = "┗";
+                            for (size_t i = 0; i < grille[0].size(); ++i) {
+                                bordureBas += "━━";
+                            }
+                            bordureBas += "┛";
 
-                    else {
-                        std::cout << c;
-                    }
-                    break;
+                            // Construire le terrain avec les murs et bordures latérales
+                            for (size_t i = 0; i < grille.size(); ++i) {
+                                std::string ligneGraphique = "┃";
+                                for (size_t j = 0; j < grille[i].size(); ++j) {
+                                    char c = grille[i][j];
+
+                                    // Vérifier si c'est la position du robot
+                                    if (robot.getPosition().getX() == j && robot.getPosition().getY() == i) {
+                                        switch (robot.getDirectionRobot()) {
+                                            case Direction::NORD:
+                                                ligneGraphique += " ^ ";
+                                                break;
+                                            case Direction::EST:
+                                                ligneGraphique += " > ";
+                                                break;
+                                            case Direction::SUD:
+                                                ligneGraphique += " v ";
+                                                break;
+                                            case Direction::OUEST:
+                                                ligneGraphique += " < ";
+                                                break;
+                                        }
+                                    } else {
+                                        // Convertir les caractères du terrain
+                                        if (c == 'X') {
+                                            ligneGraphique += "┃ "; // Murs internes
+                                        } else if (c == '.') {
+                                            ligneGraphique += ". "; // Chemin libre
+                                        }
+                                        else if (c == 'D' ) {
+                                        ligneGraphique += "D"; }
+                                        else if (c == 'A' ) {
+                                        ligneGraphique += "A"; }
+                                        else {
+                                            ligneGraphique += "  "; // Autres éléments
+                                        }
+                                    }
+                                }
+                                ligneGraphique += "┃";
+                                terrainAmeliore.push_back(ligneGraphique);
+                            }
+
+                            // Afficher le terrain complet
+                            std::cout << bordureHaut << "\n";
+                            for (const auto& ligne : terrainAmeliore) {
+                                std::cout << ligne << "\n";
+                            }
+                            std::cout << bordureBas << "\n";
+
+
                 }
 
                 default:
@@ -198,17 +248,8 @@ void Terrain::afficherTerrain(int mode, Robot& robot) const {
         }
         std::cout << '\n';
     }
+
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

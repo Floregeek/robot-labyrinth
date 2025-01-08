@@ -25,7 +25,6 @@ void AlgorithmeDeSortieMainDroite::executer(Robot &robot, const Terrain &terrain
         if (positionsVisitees.find(positionActuelle) != positionsVisitees.end()) {
             compteurBoucles++;
             if (compteurBoucles > 3) {
-                // Gérer la situation de boucle ici, par exemple en faisant demi-tour
                 robot.tournerGauche();
                 continue;
             }

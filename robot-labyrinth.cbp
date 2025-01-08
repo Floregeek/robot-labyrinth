@@ -41,9 +41,9 @@
 		<Unit filename="include/Observateur.h" />
 		<Unit filename="include/ObservateurAffichage.h" />
 		<Unit filename="include/ObservateurStatistique.h" />
-		<Unit filename="include/Position.h" />
 		<Unit filename="include/Robot.h" />
 		<Unit filename="include/Terrain.h" />
+		<Unit filename="include/position.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AlgorithmeDeSortieMainDroite.cpp" />
 		<Unit filename="src/AlgorithmeDeSortiePledge.cpp" />
@@ -51,9 +51,10 @@
 		<Unit filename="src/Observateur.cpp" />
 		<Unit filename="src/ObservateurAffichage.cpp" />
 		<Unit filename="src/ObservateurStatistique.cpp" />
-		<Unit filename="src/Position.cpp" />
 		<Unit filename="src/Robot.cpp" />
 		<Unit filename="src/Terrain.cpp" />
+		<Unit filename="src/position.cpp" />
+		<Unit filename="test.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

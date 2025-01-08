@@ -347,3 +347,170 @@
 1735221404 source:c:\users\elève\documents\robot-labyrinth\src\robot.cpp
 	"Robot.h"
 
+1736356792 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\main.cpp
+	<iostream>
+	<fstream>
+	"Terrain.h"
+	"Robot.h"
+	"MenuDuJeu.h"
+	<locale>
+	<conio.h>
+	"ObservateurAffichage.h"
+	"ObservateurStatistique.h"
+	"Position.h"
+	<io.h>
+	<fcntl.h>
+	<windows.h>
+	<memory>
+
+1735221222 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\terrain.h
+	<vector>
+	<string>
+	"Position.h"
+	"Robot.h"
+
+1735221222 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\position.h
+	<iostream>
+	<cmath>
+
+1736354034 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\robot.h
+	<vector>
+	"Position.h"
+	"Observateur.h"
+	"Terrain.h"
+	<memory>
+
+1735221222 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\observateur.h
+	"Position.h"
+	"Robot.h"
+
+1736354092 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\menudujeu.h
+	"Terrain.h"
+	"Robot.h"
+	"AlgorithmeDeSortieMainDroite.h"
+	"AlgorithmeDeSortiePledge.h"
+	"ObservateurAffichage.h"
+	"ObservateurStatistique.h"
+	<conio.h>
+	<fstream>
+	<limits>
+
+1735851236 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\algorithmedesortiemaindroite.h
+	<iostream>
+	"Robot.h"
+	"Terrain.h"
+	"AlgorithmeDeSortie.h"
+
+1735221222 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\algorithmedesortie.h
+	"Robot.h"
+	"Terrain.h"
+
+1735828956 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\algorithmedesortiepledge.h
+	"Robot.h"
+	"Terrain.h"
+	"AlgorithmeDeSortie.h"
+
+1735221222 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\observateuraffichage.h
+	"Robot.h"
+	"Observateur.h"
+
+1735221222 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\include\observateurstatistique.h
+	"Observateur.h"
+	"Robot.h"
+
+1736356755 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\src\algorithmedesortiemaindroite.cpp
+	"AlgorithmeDeSortieMainDroite.h"
+	<unordered_set>
+	<sstream>
+
+1736356691 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\src\algorithmedesortiepledge.cpp
+	"AlgorithmeDeSortiePledge.h"
+
+1735221222 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\src\observateur.cpp
+	"Observateur.h"
+
+1735221222 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\src\observateuraffichage.cpp
+	"ObservateurAffichage.h"
+
+1735221222 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\src\observateurstatistique.cpp
+	"ObservateurStatistique.h"
+	<fstream>
+	<iostream>
+	<sstream>
+
+1735221222 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\src\position.cpp
+	"position.h"
+
+1736353948 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\src\robot.cpp
+	"Robot.h"
+
+1736358097 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\src\menudujeu.cpp
+	"MenuDuJeu.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<io.h>
+	<fcntl.h>
+
+1736358549 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\src\terrain.cpp
+	"Terrain.h"
+	<fstream>
+	<iostream>
+	<sstream>
+	<io.h>
+	<fcntl.h>
+
+1736355469 source:c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\test.cpp
+	"doctest.h"
+	"Position.h"
+	"AlgorithmeDeSortieMainDroite.h"
+	"AlgorithmeDeSortiePledge.h"
+	"Robot.h"
+	"Terrain.h"
+	<vector>
+
+1736356499 c:\users\anato\desktop\robot-labyrinth (4)\robot-labyrinth\doctest.h
+	<signal.h>
+	<ciso646>
+	<cstddef>
+	<ostream>
+	<istream>
+	<type_traits>
+	"doctest_fwd.h"
+	<ctime>
+	<cmath>
+	<climits>
+	<math.h>
+	<new>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<limits>
+	<utility>
+	<fstream>
+	<sstream>
+	<iostream>
+	<algorithm>
+	<iomanip>
+	<vector>
+	<atomic>
+	<mutex>
+	<set>
+	<map>
+	<unordered_set>
+	<exception>
+	<stdexcept>
+	<csignal>
+	<cfloat>
+	<cctype>
+	<cstdint>
+	<string>
+	<sys/types.h>
+	<unistd.h>
+	<sys/sysctl.h>
+	<AfxWin.h>
+	<windows.h>
+	<io.h>
+	<sys/time.h>
+	<unistd.h>
+

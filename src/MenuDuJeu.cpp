@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <io.h>
+#include <fcntl.h>
 
 MenuDuJeu::MenuDuJeu() : terrain{Terrain("")}, robot(nullptr), casesParcourues(0), modeTexte(0),
       observateurStatistique(std::make_unique<ObservateurStatistique>())
@@ -39,12 +41,12 @@ void MenuDuJeu::afficherMenuPrincipal() {
 
                         Position depart = terrain.getPositionDepart();
                         robot = new Robot(depart, Direction::NORD);
-                        observateurAffichage = std::make_unique<ObservateurAffichage>();
-                        observateurStatistique = std::make_unique<ObservateurStatistique>();
+                        observateurAffichage = std::make_shared<ObservateurAffichage>();
+                        observateurStatistique = std::make_shared<ObservateurStatistique>();
 
+                          robot->enregistrerObservateur(observateurAffichage);
+                          robot->enregistrerObservateur(observateurStatistique);
 
-                          robot->enregistrerObservateur(move(observateurAffichage));
-                          robot->enregistrerObservateur(move(observateurStatistique));
 
                         std::cout << "Terrain initial avec le robot :\n";
                         terrain.afficherTerrain(modeTexte, *robot);
@@ -63,6 +65,7 @@ void MenuDuJeu::afficherMenuPrincipal() {
 
                             switch (sousChoix) {
                                 case 1: {
+
                                     char input;
                                     while (true) {
 
@@ -102,6 +105,13 @@ void MenuDuJeu::afficherMenuPrincipal() {
 
 
                                         terrain.afficherTerrain(modeTexte, *robot);
+
+                                        Position sortie = terrain.getPositionArrivee();
+                                            if (robot->getPosition() == sortie) {
+                                                std::cout << "Vous avez gagné !\n";
+                                                 return;
+                                            }
+
                                     }
                                     break;
                                 }
@@ -205,19 +215,19 @@ void MenuDuJeu::choisirModeTexte() {
     switch (choix) {
         case 0:
             std::cout << "Mode texte simple sélectionné.\n";
-            modeTexte = 0; // Met à jour la variable membre
+            modeTexte = 0;
             break;
         case 1:
             std::cout << "Mode texte amélioré 1 sélectionné.\n";
-            modeTexte = 1; // Met à jour la variable membre
+            modeTexte = 1;
             break;
         case 2:
             std::cout << "Mode texte amélioré 2 sélectionné.\n";
-            modeTexte = 2; // Met à jour la variable membre
+            modeTexte = 2;
             break;
         default:
             std::cerr << "Choix invalide. Mode texte simple activé par défaut.\n";
-            modeTexte = 0; // Met à jour la variable membre
+            modeTexte = 0;
     }
 }
 

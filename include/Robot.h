@@ -25,7 +25,7 @@ class Robot
 
 
         void notifierObservateurs();
-        void enregistrerObservateur(std::unique_ptr<Observateur> observateur);
+        void enregistrerObservateur(std::shared_ptr<Observateur> observateur);
 
         Position getPosition() const;
         Direction getDirectionRobot() const;
@@ -35,7 +35,7 @@ class Robot
     private:
         Position d_position;
         Direction d_direction;
-       std::vector<std::unique_ptr<Observateur>> d_observateurs;
+       std::vector<std::shared_ptr<Observateur>> d_observateurs;
        std::vector<Position> obstacles;
 
 };

@@ -26,8 +26,8 @@ private:
     Robot* robot;
     int casesParcourues;
     int modeTexte;
-    std::unique_ptr<ObservateurAffichage> observateurAffichage;
-    std::unique_ptr<ObservateurStatistique> observateurStatistique;
+    std::shared_ptr<ObservateurAffichage> observateurAffichage;
+    std::shared_ptr<ObservateurStatistique> observateurStatistique;
 
 
     void choisirAlgorithmeDeSortie();

@@ -1,89 +1,74 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "Position.h"
+#include "AlgorithmeDeSortieMainDroite.h"
+#include "AlgorithmeDeSortiePledge.h"
 #include "Robot.h"
 #include "Terrain.h"
 #include <vector>
 
 
 TEST_CASE("[Robot] Test de la méthode tournerGauche()") {
-   
     {
         Position initialPosition(0, 0);
         Robot robot(initialPosition, Direction::NORD);
-        robot.tournerGauche(); // Le robot tourne à gauche (devrait aller vers OUEST)
-
-        REQUIRE(robot.getDirectionRobot() == Direction::OUEST); // La direction doit être OUEST
+        robot.tournerGauche();
+        REQUIRE(robot.getDirectionRobot() == Direction::OUEST);
     }
 
-   
     {
         Position initialPosition(0, 0);
         Robot robot(initialPosition, Direction::EST);
-        robot.tournerGauche(); // Le robot tourne à gauche (devrait aller vers NORD)
-
-        REQUIRE(robot.getDirectionRobot() == Direction::NORD); // La direction doit être NORD
+        robot.tournerGauche();
+        REQUIRE(robot.getDirectionRobot() == Direction::NORD);
     }
 
     {
         Position initialPosition(0, 0);
         Robot robot(initialPosition, Direction::SUD);
-        robot.tournerGauche(); // Le robot tourne à gauche (devrait aller vers EST)
-
-        REQUIRE(robot.getDirectionRobot() == Direction::EST); // La direction doit être EST
+        robot.tournerGauche();
+        REQUIRE(robot.getDirectionRobot() == Direction::EST);
     }
 
-   
     {
         Position initialPosition(0, 0);
         Robot robot(initialPosition, Direction::OUEST);
-        robot.tournerGauche(); // Le robot tourne à gauche (devrait aller vers SUD)
-
-        REQUIRE(robot.getDirectionRobot() == Direction::SUD); // La direction doit être SUD
+        robot.tournerGauche();
+        REQUIRE(robot.getDirectionRobot() == Direction::SUD);
     }
 }
 
 TEST_CASE("[Robot] Test de la méthode tournerDroite()") {
-    
     {
         Position initialPosition(0, 0);
         Robot robot(initialPosition, Direction::NORD);
-        robot.tournerDroite(); // Le robot tourne à droite (devrait aller vers EST)
-
-        REQUIRE(robot.getDirectionRobot() == Direction::EST); // La direction doit être EST
+        robot.tournerDroite();
+        REQUIRE(robot.getDirectionRobot() == Direction::EST);
     }
 
-  
     {
         Position initialPosition(0, 0);
         Robot robot(initialPosition, Direction::EST);
-        robot.tournerDroite(); // Le robot tourne à droite (devrait aller vers SUD)
-
-        REQUIRE(robot.getDirectionRobot() == Direction::SUD); // La direction doit être SUD
+        robot.tournerDroite();
+        REQUIRE(robot.getDirectionRobot() == Direction::SUD);
     }
-
 
     {
         Position initialPosition(0, 0);
         Robot robot(initialPosition, Direction::SUD);
-        robot.tournerDroite(); // Le robot tourne à droite (devrait aller vers OUEST)
-
-        REQUIRE(robot.getDirectionRobot() == Direction::OUEST); // La direction doit être OUEST
+        robot.tournerDroite();
+        REQUIRE(robot.getDirectionRobot() == Direction::OUEST);
     }
 
-    
     {
         Position initialPosition(0, 0);
         Robot robot(initialPosition, Direction::OUEST);
-        robot.tournerDroite(); // Le robot tourne à droite (devrait aller vers NORD)
-
-        REQUIRE(robot.getDirectionRobot() == Direction::NORD); // La direction doit être NORD
+        robot.tournerDroite();
+        REQUIRE(robot.getDirectionRobot() == Direction::NORD);
     }
 }
 
-
 TEST_CASE("[Terrain] Test de la méthode chargerDepuisFichier") {
-   
     std::ofstream fichier("test_terrain.txt");
     fichier << ".....\n"
             << "..D..\n"
@@ -92,44 +77,30 @@ TEST_CASE("[Terrain] Test de la méthode chargerDepuisFichier") {
             << "..A..\n";
     fichier.close();
 
-    
     Terrain terrain("test_terrain.txt");
 
-    
-    REQUIRE(terrain.getPositionDepart() == Position(2, 1));  // Position 'D'
-    REQUIRE(terrain.getPositionArrivee() == Position(2, 4));  // Position 'A'
+    REQUIRE(terrain.getPositionDepart() == Position(2, 1));
+    REQUIRE(terrain.getPositionArrivee() == Position(2, 4));
 
-    
     auto obstacles = terrain.obtenirObstacles();
-    REQUIRE(obstacles.empty());  // Pas d'obstacles dans ce terrain
+    REQUIRE(obstacles.empty());
 
-  
     std::remove("test_terrain.txt");
 }
 
-TEST_CASE("[Terrain] Test de la méthode sauvegarderDansFichier") {
-   
-    Terrain terrain("test_terrain.txt");
-    terrain.sauvegarderDansFichier("terrain_sauvegardé.txt");
+TEST_CASE("Sauvegarde du terrain dans un fichier") {
+    Terrain terrain("test_terrain_valid.txt");
+    std::string fichierSauvegarde = "test_terrain_save.txt";
 
-  
-    std::ifstream fichier("terrain_sauvegardé.txt");
-    std::string contenu;
-    std::string ligne;
+    terrain.sauvegarderDansFichier(fichierSauvegarde);
 
-    while (std::getline(fichier, ligne)) {
-        contenu += ligne + "\n";
-    }
-
-   
-    REQUIRE(contenu == ".....\n..D..\n.....\n.....\n..A..\n");
-
-    
-    std::remove("terrain_sauvegardé.txt");
+    Terrain terrainCharge(fichierSauvegarde);
+    REQUIRE(terrainCharge.getPositionDepart() == terrain.getPositionDepart());
+    REQUIRE(terrainCharge.getPositionArrivee() == terrain.getPositionArrivee());
+    REQUIRE(terrainCharge.obtenirObstacles() == terrain.obtenirObstacles());
 }
 
 TEST_CASE("[Terrain] Test de la méthode estMur") {
-   
     std::ofstream fichier("test_terrain_mur.txt");
     fichier << ".....\n"
             << "..D..\n"
@@ -138,15 +109,118 @@ TEST_CASE("[Terrain] Test de la méthode estMur") {
             << "..A..\n";
     fichier.close();
 
-   
     Terrain terrain("test_terrain_mur.txt");
 
-    
-    REQUIRE(terrain.estMur(Position(0, 0)) == false);  // Pas un mur
-    REQUIRE(terrain.estMur(Position(2, 2)) == true);   // C'est un obstacle ('X')
-    REQUIRE(terrain.estMur(Position(5, 4)) == true);   // Hors limites
-    REQUIRE(terrain.estMur(Position(2, 1)) == false);  // Case vide, pas un mur
+    REQUIRE(terrain.estMur(Position(0, 0)) == false);
+    REQUIRE(terrain.estMur(Position(2, 2)) == true);
+    REQUIRE(terrain.estMur(Position(5, 4)) == true);
+    REQUIRE(terrain.estMur(Position(2, 1)) == false);
 
-    
     std::remove("test_terrain_mur.txt");
 }
+
+TEST_CASE("Affichage du terrain") {
+    Terrain terrain("test_terrain_valid.txt");
+    Robot robot(Position(1, 1), Direction::EST);
+
+    SUBCASE("Affichage brut") {
+        REQUIRE_NOTHROW(terrain.afficherTerrain(0, robot));
+    }
+
+    SUBCASE("Affichage ASCII") {
+        REQUIRE_NOTHROW(terrain.afficherTerrain(1, robot));
+    }
+
+    SUBCASE("Affichage Unicode") {
+        REQUIRE_NOTHROW(terrain.afficherTerrain(2, robot));
+    }
+}
+
+TEST_CASE("Test de la méthode avancer") {
+    Terrain terrain("terrain.txt");
+    Robot robot(Position(2, 1), Direction::EST);
+
+    robot.avancer(terrain);
+
+    REQUIRE(robot.getPosition() == Position(3, 1));
+}
+
+TEST_CASE("Test de la méthode tournerGauche") {
+    Robot robot(Position(2, 1), Direction::EST);
+
+    robot.tournerGauche();
+    REQUIRE(robot.getDirectionRobot() == Direction::NORD);
+
+    robot.tournerGauche();
+    REQUIRE(robot.getDirectionRobot() == Direction::OUEST);
+
+    robot.tournerGauche();
+    REQUIRE(robot.getDirectionRobot() == Direction::SUD);
+
+    robot.tournerGauche();
+    REQUIRE(robot.getDirectionRobot() == Direction::EST);
+}
+
+TEST_CASE("Test de la méthode tournerDroite") {
+    Robot robot(Position(2, 1), Direction::EST);
+
+    robot.tournerDroite();
+    REQUIRE(robot.getDirectionRobot() == Direction::SUD);
+
+    robot.tournerDroite();
+    REQUIRE(robot.getDirectionRobot() == Direction::OUEST);
+
+    robot.tournerDroite();
+    REQUIRE(robot.getDirectionRobot() == Direction::NORD);
+
+    robot.tournerDroite();
+    REQUIRE(robot.getDirectionRobot() == Direction::EST);
+}
+
+TEST_CASE("Test de getPosition()") {
+    Position positionInitiale(5, 10);
+    Robot robot(positionInitiale, Direction::NORD);
+
+    REQUIRE(robot.getPosition().getX() == 5);
+    REQUIRE(robot.getPosition().getY() == 10);
+}
+
+TEST_CASE("Test de getDirectionRobot()") {
+    Robot robot(Position(0, 0), Direction::SUD);
+
+    REQUIRE(robot.getDirectionRobot() == Direction::SUD);
+}
+
+TEST_CASE("Test de directionToString()") {
+    Robot robot(Position(0, 0), Direction::EST);
+
+    REQUIRE(robot.directionToString(Direction::NORD) == "NORD");
+    REQUIRE(robot.directionToString(Direction::EST) == "EST");
+    REQUIRE(robot.directionToString(Direction::SUD) == "SUD");
+    REQUIRE(robot.directionToString(Direction::OUEST) == "OUEST");
+}
+TEST_CASE("Test de l'algorithme de sortie Pledge") {
+    Terrain terrain("terrain_description");
+
+    Position positionDepart(0, 0);
+    Robot robot(positionDepart, Direction::NORD);
+
+    AlgorithmeDeSortiePledge algo;
+    algo.executer(robot, terrain);
+
+    REQUIRE(robot.getPosition() == terrain.getPositionArrivee());
+}
+TEST_CASE("Test de l'algorithme de sortie Main Droite") {
+    Terrain terrain("terrain.txt");
+
+    Position positionDepart(0, 0);
+    Robot robot(positionDepart, Direction::NORD);
+
+    AlgorithmeDeSortieMainDroite algo;
+    algo.executer(robot, terrain);
+
+    REQUIRE(robot.getPosition() == terrain.getPositionArrivee());
+}
+
+
+

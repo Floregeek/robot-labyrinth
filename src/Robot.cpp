@@ -134,8 +134,8 @@ void Robot::notifierObservateurs(){
             observateur->MettreAjour(*this);
         }
 }
- void Robot::enregistrerObservateur(std::unique_ptr<Observateur> observateur) {
-        d_observateurs.push_back(std::move(observateur));
+ void Robot::enregistrerObservateur(std::shared_ptr<Observateur> observateur) {
+        d_observateurs.push_back(observateur);
     }
 
 Position Robot::getPosition() const{
