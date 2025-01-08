@@ -8,6 +8,7 @@
 
 class AlgorithmeDeSortieMainDroite: public AlgorithmeDeSortie
 {
+    int modetext =0;
 public:
 void executer(Robot& robot, const Terrain& terrain)override;
 };

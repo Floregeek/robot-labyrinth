@@ -13,7 +13,7 @@ void MenuDuJeu::afficherMenuPrincipal() {
     do {
         std::cout << "==== MENU DU JEU ====\n";
         std::cout << "1. Charger un terrain depuis un fichier\n";
-        std::cout << "2. Changer le mode et afficher le terrain amélioré\n";
+        std::cout << "2. Changer le mode et afficher le terrain amÃ©liorÃ©\n";
         std::cout << "3. Quitter\n";
         std::cout << "Votre choix : ";
         std::cin >> choix;
@@ -34,7 +34,7 @@ void MenuDuJeu::afficherMenuPrincipal() {
                             break;
                         }
 
-                        std::cout << "Terrain chargé avec succès depuis " << nomFichier << " !\n";
+                        std::cout << "Terrain chargÃ© avec succÃ¨s depuis " << nomFichier << " !\n";
 
 
                         Position depart = terrain.getPositionDepart();
@@ -52,8 +52,8 @@ void MenuDuJeu::afficherMenuPrincipal() {
                         bool continuer = true;
                         while (continuer) {
                             std::cout << "==== OPTIONS ====\n";
-                            std::cout << "1. Déplacer le robot manuellement\n";
-                            std::cout << "2. Exécuter un algorithme de sortie\n";
+                            std::cout << "1. DÃ©placer le robot manuellement\n";
+                            std::cout << "2. ExÃ©cuter un algorithme de sortie\n";
                             std::cout << "3. Afficher le nombre de cases parcourues par le robot\n";
                             std::cout << "4. Quitter\n";
                             std::cout << "Votre choix : ";
@@ -83,7 +83,7 @@ void MenuDuJeu::afficherMenuPrincipal() {
                                                 if (!robot->detecterObstacleEnFace(terrain)) {
                                                     robot->avancer(terrain);
                                                 } else {
-                                                    std::cout << "Obstacle détecté en face !\n";
+                                                    std::cout << "Obstacle dÃ©tectÃ© en face !\n";
                                                 }
                                                 break;
 
@@ -118,7 +118,7 @@ void MenuDuJeu::afficherMenuPrincipal() {
                                     break;
 
                                 default:
-                                    std::cerr << "Choix invalide. Veuillez réessayer.\n";
+                                    std::cerr << "Choix invalide. Veuillez rÃ©essayer.\n";
                             }
                         }
                     } catch (const std::exception& e) {
@@ -142,7 +142,7 @@ void MenuDuJeu::afficherMenuPrincipal() {
                 break;
 
             default:
-                std::cerr << "Choix invalide. Veuillez réessayer.\n";
+                std::cerr << "Choix invalide. Veuillez rÃ©essayer.\n";
         }
     } while (choix != 3);
 
@@ -189,42 +189,41 @@ void MenuDuJeu::afficherCasesParcourues() const {
         std::cout << "Nombre de cases parcourues par le robot : "
                   << observateurStatistique->getTotalDeplacements() << "\n";
     } else {
-        std::cout << "Statistiques indisponibles. Le robot n'est pas initialisé.\n";
+        std::cout << "Statistiques indisponibles. Le robot n'est pas initialisÃ©.\n";
     }
 }
 
 void MenuDuJeu::choisirModeTexte() {
-
-    int modeTexte;
     std::cout << "==== CHOISIR LE MODE TEXTE ====\n";
     std::cout << "0. Mode texte simple\n";
-    std::cout << "1. Mode texte amélioré 1\n";
-    std::cout << "2. Mode texte amélioré 2\n";
+    std::cout << "1. Mode texte amÃ©liorÃ© 1\n";
+    std::cout << "2. Mode texte amÃ©liorÃ© 2\n";
     std::cout << "Votre choix : ";
-    std::cin >> modeTexte;
+    int choix;
+    std::cin >> choix;
 
-    switch (modeTexte) {
+    switch (choix) {
         case 0:
-            std::cout << "Mode texte simple sélectionné.\n";
-
+            std::cout << "Mode texte simple sÃ©lectionnÃ©.\n";
+            modeTexte = 0; // Met Ã  jour la variable membre
             break;
         case 1:
-            std::cout << "Mode texte amélioré 1 sélectionné.\n";
-
+            std::cout << "Mode texte amÃ©liorÃ© 1 sÃ©lectionnÃ©.\n";
+            modeTexte = 1; // Met Ã  jour la variable membre
             break;
         case 2:
-            std::cout << "Mode texte amélioré 2 sélectionné.\n";
-
+            std::cout << "Mode texte amÃ©liorÃ© 2 sÃ©lectionnÃ©.\n";
+            modeTexte = 2; // Met Ã  jour la variable membre
             break;
         default:
-            std::cerr << "Choix invalide. Mode texte simple activé par défaut.\n";
-            modeTexte = 0;
+            std::cerr << "Choix invalide. Mode texte simple activÃ© par dÃ©faut.\n";
+            modeTexte = 0; // Met Ã  jour la variable membre
     }
 }
 
 void MenuDuJeu::afficherTerrain() {
     if (!robot) {
-        std::cerr << "Erreur : Aucun robot n'a été placé sur le terrain.\n";
+        std::cerr << "Erreur : Aucun robot n'a Ã©tÃ© placÃ© sur le terrain.\n";
         return;
     }
     terrain.afficherTerrain(modeTexte, *robot);

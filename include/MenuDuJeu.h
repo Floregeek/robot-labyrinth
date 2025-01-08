@@ -9,6 +9,7 @@
 #include "ObservateurStatistique.h"
 #include <conio.h>
 #include<fstream>
+#include<limits>
 class Terrain;
 
 

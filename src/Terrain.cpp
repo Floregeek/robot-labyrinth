@@ -123,35 +123,54 @@ void Terrain::afficherTerrain(int mode, Robot& robot) const {
                     std::cout << c;
                     break;
                 case 1: { // Mode ASCII amélioré
-                    if (c == 'X') {
+          if (i == 0)
+          if (j == 0) {
+            std::cout << '+';
+        } else if (j == grille[i].size() / 2 - 1 || j == grille[i].size() / 2) {
+            std::cout << '#';
+        } else if (j == grille[i].size() - 1) {
+            std::cout << '+';
+        } else {
+            std::cout << '-';
+        }
+    } else if (i == grille.size() - 1) {
+        if (j == 0 || j == grille[i].size() - 1) {
+            std::cout << '+';
+        } else {
+            std::cout << '-';
+        }
+    } else {
+        if (j == 0 || j == grille[i].size() - 1) {
+            std::cout << '|';
+        } else if (c == 'X') {
+            std::cout << '+';
+        } else if (c == '.') {
+            std::cout << '.';
+        } else if (c == 'D' || c == 'A') {
+            std::cout << c;
+        } else if (robot.getPosition().getX() == j && robot.getPosition().getY() == i) {
 
-                        if ((i == 0 || i == grille.size() - 1) &&
-                            (j == 0 || j == grille[i].size() - 1)) {
-                            std::cout << '+';
-                        }
-
-                        else if (i == 0 || i == grille.size() - 1) {
-                            std::cout << '-';
-                        }
-
-                        else if (j == 0 || j == grille[i].size() - 1) {
-                            std::cout << '|';
-                        }
-
-                        else {
-                            std::cout << '|';
-                        }
-                    }
-                    else if (c == '.') {
-                        std::cout << '.';
-                    }
-
-                    else if (c == 'D' || c == 'A') {
-                        std::cout << c;
-                    }
+            switch (robot.getDirectionRobot()) {
+                case Direction::NORD:
+                    std::cout << '^';
                     break;
-                }
-                case 2: { // Mode Unicode avancé
+                case Direction::EST:
+                    std::cout << '>';
+                    break;
+                case Direction::SUD:
+                    std::cout << 'v';
+                    break;
+                case Direction::OUEST:
+                    std::cout << '<';
+                    break;
+            }
+          } else {
+            std::cout << ' ';
+          }
+         }
+                break;
+         }
+          case 2: { // Mode Unicode avancé
                     if (c == 'X') {
                         std::cout << "╬";
                     }
